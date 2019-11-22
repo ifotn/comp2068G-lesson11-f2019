@@ -18,5 +18,18 @@ router.get('/', (req, res) => {
     })
 })
 
+/* GET one */
+router.get('/:_id', (req, res) => {
+    // return selected task
+    Task.findById(req.params._id, (err, task) => {
+        if (err) {
+            return res.send(err).status(400)
+        }
+        else {
+            res.json(task).status(200)
+        }
+    })
+})
+
 // make public
 module.exports = router
