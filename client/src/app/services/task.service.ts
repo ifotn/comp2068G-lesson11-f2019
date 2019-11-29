@@ -28,4 +28,19 @@ export class TaskService {
   addTask(newTask) {
     return this.http.post(globals.apiRoot + 'tasks', newTask, httpOptions)
   }
+
+  // DELETE
+  deleteTask(_id) {
+    return this.http.delete(globals.apiRoot + 'tasks/' + _id, httpOptions)
+  }
+
+  // UPDATE
+  updateTask(task) {
+    return this.http.put(globals.apiRoot + 'tasks/' + task._id, task, httpOptions)
+  }
+
+  // SELECT - get selected task
+  // selectTask(_id) {
+  //   return this.http.get(globals.apiRoot + 'tasks/' + _id, httpOptions)
+  // }
 }

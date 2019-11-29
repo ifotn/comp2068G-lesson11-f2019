@@ -1,6 +1,7 @@
 <h1>COMP2068G MEAN Tasks</h1>
 
-<section>
+<a href="#" (click)="displayForm()">Add a Task</a>
+<section *ngIf="showForm">
   <fieldset class="form-group">
     <label class="control-label col-md-2">Name: *</label>
     <input name="name" id="name" required [(ngModel)]="name" />
@@ -13,7 +14,10 @@
     <label class="control-label col-md-2">Priority: *</label>
     <input name="priority" id="priority" required [(ngModel)]="priority" type="number" min="1" max="5" />
   </fieldset>
-  <button class="offset-2 btn btn-primary" (click)="addTask()">Save</button>
+  <input type="hidden" name="_id" id="_id" [(ngModel)]="_id" />
+  <button class="offset-2 btn btn-primary" (click)="addTask()" *ngIf="!_id">Save</button>
+  <button class="offset-2 btn btn-primary" (click)="updateTask()" *ngIf="_id">Save</button>
+  <button class="btn btn-success" (click)="clearForm()">Reset</button>
 </section>
 
 <table class="table table-striped table-hover">
@@ -21,10 +25,15 @@
     <th>Name</th>
     <th>Priority</th>
     <th>Complete</th>
+    <th>Actions</th>
   </tr>
   <tr *ngFor="let task of tasks">
     <td>{{task.name}}</td>
     <td>{{task.priority}}</td>
     <td>{{task.complete}}</td>
+    <td>
+      <a class="btn btn-info text-white" (click)="selectTask(task)">Edit</a>
+      <a class="btn btn-danger text-white" (click)="deleteTask(task._id)">Delete</a>
+    </td>
   </tr>
 </table>

@@ -34,7 +34,7 @@ router.get('/:_id', (req, res) => {
         if (err) {
             return res.send(err).status(400)
         }
-        else {
+        else { // 200: OK
             res.json(task).status(200)
         }
     })
@@ -52,6 +52,30 @@ router.post('/', (req, res) => {
         }
         else { // send 201 - Resource Created
             res.json(task).status(201)
+        }
+    })
+})
+
+/* DELETE */
+router.delete('/:_id', (req, res) => {
+    Task.remove({ _id: req.params._id }, (err, task) => {
+        if (err) {
+            return res.send(err).status(400)
+        }
+        else { // send 204 - No Content
+            res.json(task).status(204)
+        }
+    })
+})
+
+/* PUT (UPDATE) */
+router.put('/:_id', (req, res) => {
+    Task.update({ _id: req.params._id }, req.body, (err, task) => {
+        if (err) {
+            return res.send(err).status(400)
+        }
+        else { // send 202 - Accepted
+            res.json(task).status(202)
         }
     })
 })
