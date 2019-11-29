@@ -23,4 +23,9 @@ export class TaskService {
   getTasks() {
     return this.http.get(globals.apiRoot + 'tasks', httpOptions)
   }
+
+  // POST - save new task
+  addTask(newTask) {
+    return this.http.post(globals.apiRoot + 'tasks', newTask, httpOptions)
+  }
 }

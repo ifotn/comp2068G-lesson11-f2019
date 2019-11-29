@@ -14,7 +14,9 @@ module.exports = {
             clientSecret: '07db6043450e52c5e36371e6d916b580',
             callbackURL: 'https://task-manager-f19.herokuapp.com/facebook/callback'
         }
-    }
+    },
+    'apiRoot': 'http://localhost:3000/',
+    'clientRoot': 'http://localhost:4200'
 }
 
 /* local callbacks
